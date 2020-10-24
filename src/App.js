@@ -1,26 +1,53 @@
 import React, {Component} from 'react';
 import Navbar from './Components/layout/Navbar'
+import Alert from './Components/layout/Alert'
 import axios from 'axios'
 import Users from './Components/users/Users';
+import Search from './Components/users/Search';
 import './App.css';
 
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   }
   async componentDidMount () {
     this.setState({loading: true}); 
-    const res = await axios.get('https://api.github.com/users')
+    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
 
     console.log(res.data)
     this.setState({loading: false, users: res.data})
+  }
+  //Search github Users
+  searchUsers = async (text) => {
+    this.setState ({loading: true});
+    const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+
+    this.setState({loading: false, users: res.data.items})
+  }
+
+  //Clear Users 
+  clearUsers = async () => {
+    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+
+    this.setState({loading: false, users: res.data})
+  }
+  // Alert 
+  setAlert = (msg, type) => {
+    this.setState({alert:{ msg, type}});
+
+    setTimeout(() => this.setState({alert: null}), 3000);
   }
   render() {
     return (
     <div className="App">
       <Navbar />
-      <Users loading={this.state.loading} users={this.state.users} />
+      <div className="container">
+        <Alert alert={this.state.alert}/>
+        <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} setAlert={this.setAlert}/>
+        <Users loading={this.state.loading} users={this.state.users} />
+      </div>
     </div>
   );
   }
