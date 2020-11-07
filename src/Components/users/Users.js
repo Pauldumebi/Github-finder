@@ -9,7 +9,7 @@ const Users = ({users, loading})=> {
    }
    else {
       return (
-         <div style={userStyle}>
+         <div style={userStyle} className="userStyle">
             {users.map(user=> (
             <UserItem key={user.id} user={user}/>
             ))}

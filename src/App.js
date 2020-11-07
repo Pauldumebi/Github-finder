@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React, {Fragment, Component} from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Navbar from './Components/layout/Navbar'
 import Alert from './Components/layout/Alert'
 import axios from 'axios'
 import Users from './Components/users/Users';
 import Search from './Components/users/Search';
+import About from './Components/Pages/About'
 import './App.css';
 
 class App extends Component {
@@ -41,14 +43,24 @@ class App extends Component {
   }
   render() {
     return (
-    <div className="App">
-      <Navbar />
-      <div className="container">
-        <Alert alert={this.state.alert}/>
-        <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} setAlert={this.setAlert}/>
-        <Users loading={this.state.loading} users={this.state.users} />
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="container">
+          <Alert alert={this.state.alert}/>
+          <Switch>
+            <Route exact path='/' render={props => (
+              <Fragment>
+                <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} setAlert={this.setAlert}/>
+                <Users loading={this.state.loading} users={this.state.users} />
+              </Fragment>
+            )}
+            />
+            <Route exact path='/about' component={About}/>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
   }
 }
