@@ -107,6 +107,12 @@ h1, h2, h3, h4, h5, h6 {
 .card {
   background: #fff;
   padding: 1rem;
+  border: .1rem #c5c5c5 solid;
+}
+.profile-card {
+  background: #fff;
+  padding: 1rem;
+  border: .1rem #c5c5c5 solid;
 }
 
 .bg-dark {
@@ -138,6 +144,52 @@ h1, h2, h3, h4, h5, h6 {
 .bg-secondary a {
   color: #fff;
 }
+.round-img {
+  border-radius: 50%;
+}
+.badge {
+  display: flex;
+}
+.badge-primary {
+  background-color: #467fd0 !important;
+  color: white;
+  width: fit-content;
+  padding: .5rem .8rem;
+  margin: 0 .5rem;
+  border-radius: 5px !important;
+}
+.badge-success {
+  background-color: #42ba96 !important;
+  color: white;
+  width: fit-content;
+  padding: .5rem .8rem;
+  margin: 0 .5rem;
+  border-radius: 5px !important;
+}
+.badge-danger {
+  background-color:#df4759!important;
+  color: white;
+  width: fit-content;
+  padding: .5rem .8rem;
+  margin: 0 .5rem;
+  border-radius: 5px !important;
+}
+.badge-dark {
+  background-color: #161c2d !important;
+  color: white;
+  width: fit-content;
+  padding: .5rem .8rem;
+  margin: 0 .5rem;
+  border-radius: 5px !important;
+}
+.card-badge  {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.text-align {
+  text-align: center;
+}
 
 .py-1 { padding: 1.5rem}
 .py-2 { padding: 2rem 0 }
@@ -145,6 +197,13 @@ h1, h2, h3, h4, h5, h6 {
 .p-1 { padding: 1.5rem }
 .p-2 { padding: 2rem }
 .p-3 { padding: 3rem }
+
+.my-1 { margin: 1.5rem 0}
+.my-2 { margin: 2rem 1rem 2rem 0 }
+.my-3 { margin: 3rem 0 }
+.m-1 { margin: 1.5rem }
+.m-2 { margin: 2rem }
+.m-3 { margin: 3rem }
 
 .l-heading {
   font-size: 3rem;
@@ -323,7 +382,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
 }
-
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
 #main-footer .footer-container input[type='submit'] {
   width: 90%;
 }
@@ -339,12 +401,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 480px) {
+  h1, h2 {
+    font-size: 18px;
+  }
   .card {
     padding: 1rem 0;
   }
   .userStyle {
-    display: grid;
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .grid {
+    grid-template-columns: unset;
+    text-align: center;
+  }
+  .card-badge {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 2fr));
+  }
+  .badge-primary, .badge-success, .badge-danger, .badge-dark {
+    margin: .5rem;
   }
 }
 
