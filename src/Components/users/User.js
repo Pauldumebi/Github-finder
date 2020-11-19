@@ -41,7 +41,7 @@ export class User extends Component {
                Back to Search
             </Link>
             Hireable: {''}
-            {hireable ? (<i className="fa fa-check text-success" />) : (
+            {hireable ? (<i className="fa fa-check text-success"/>) : (
                <i className="fa fa-times-circle text-danger"/>
             )}
             <div className="profile-card grid">
