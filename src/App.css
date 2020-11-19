@@ -384,7 +384,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 #main-footer .footer-container input[type='submit'] {
   width: 90%;
@@ -394,10 +394,32 @@ h1, h2, h3, h4, h5, h6 {
    
 }
 @media screen and (max-width: 950px) {
-  
+  .grid {
+    text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+   }
 }
 @media screen and (max-width: 650px) {
-
+  h1, h2 {
+    font-size: 18px;
+  }
+  .card {
+    padding: 1rem 0;
+  }
+  .userStyle {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .grid {
+    grid-template-columns: unset;
+    text-align: center;
+  }
+  .card-badge {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 2fr));
+  }
+  .badge-primary, .badge-success, .badge-danger, .badge-dark {
+    margin: .5rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -416,7 +438,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .card-badge {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 2fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 2fr));
   }
   .badge-primary, .badge-success, .badge-danger, .badge-dark {
     margin: .5rem;
