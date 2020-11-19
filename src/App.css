@@ -415,7 +415,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .card-badge {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 2fr));
+    grid-template-columns: repeat(auto-fill, minmax(165px, 2fr));
   }
   .badge-primary, .badge-success, .badge-danger, .badge-dark {
     margin: .5rem;
