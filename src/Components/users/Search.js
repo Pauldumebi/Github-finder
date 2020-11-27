@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 
-const Search = (searchUsers, showClear, clearUsers, setAlert) => {
+const Search = ({searchUsers, showClear, clearUsers, setAlert}) => {
    const [text, setText] = useState('')
 
    const onChange = (e) => setText(e.target.value)
-   }
+
    const onSubmit = (e) => {
       e.preventDefault()
       if (text === '') {
@@ -24,10 +24,9 @@ const Search = (searchUsers, showClear, clearUsers, setAlert) => {
          </form>
          <button className= "btn btn-light btn-block Clearbtn" onClick={clearUsers} style={{fontSize: '16px', marginBottom: '1.5rem', backgroundColor: '#0275d8'}}>Clear</button>
       </div>
-   )
+   );
 }
- 
-static propTypes = {
+Search.propTypes = {
    searchUsers: PropTypes.func.isRequired,
    clearUsers: PropTypes.func.isRequired,
    setAlert: PropTypes.func.isRequired,
